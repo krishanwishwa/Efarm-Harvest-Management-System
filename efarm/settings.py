@@ -14,7 +14,7 @@ SECRET_KEY = 'll73%v#v9fa_dporkw6_z2q4b_!8ku)--%jn4$5um&s8&32d$7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['efarm-harvest-management.herokuapp.com']
 
 
 # Application definition
