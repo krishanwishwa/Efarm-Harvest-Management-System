@@ -1,0 +1,486 @@
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+<!--
+  Author: W3layouts
+  Author URL: http://w3layouts.com
+  License: Creative Commons Attribution 3.0 Unported
+  License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html>
+
+
+
+<!-- Head -->
+<head>
+
+<title>Weather Widget </title>
+
+<!-- For-Mobile-Apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Monaco Weather Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
+
+<!-- Index-Page-CSS -->	  <link rel="stylesheet" href="{% static 'staticweather/css/style_forecast.css' %}"		 type="text/css" media="all">
+<!-- Owl-Carousel-CSS --> <link rel="stylesheet" href="{% static 'staticweather/css/owl.carousel.css' %}" type="text/css" media="all">
+
+<!-- Fonts -->
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" 						type="text/css" media="all">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" type="text/css" media="all">
+<!-- //Fonts -->
+
+<!-- Font-Awesome-File-Links -->
+<!-- CSS --> <link rel="stylesheet" href="{% static 'staticweather/css/font-awesome.css' %}" 	 	 type="text/css" media="all">
+<!-- TTF --> <link rel="stylesheet" href="{% static 'staticweather/fonts/fontawesome-webfont.ttf' %}" type="text/css" media="all">
+<!-- //Font-Awesome-File-Links -->
+
+<style>
+.example_e {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 70;
+padding: 20px;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.example_e:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+
+.example_f {
+border: none;
+background: rgba(119, 170, 197, 0.30);
+color: #ffffff !important;
+font-weight: 700 !important;
+padding: 20px;
+letter-spacing: 3px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.example_f:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap')
+
+$form-bg: #f8f4e5
+$form-border: #f45702
+$form-shadow: #dfae4b
+$form-focus: #6bd4b1
+$font-size: 12pt
+$font-face: 'Spartan'
+$font-color: #2A293E
+
+*
+  margin: 0
+  padding: 0
+
+body
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/image-from-rawpixel-id-2044837-jpeg.jpg") center center no-repeat
+  background-size: cover
+  width: 100vw
+  height: 100vh
+  display: grid
+  align-items: center
+  justify-items: center
+  font-size: $font-size
+  font-family: $font-face
+  color: $font-color
+
+.contact-us
+  background: $form-bg
+  padding: 50px 100px
+  border-top: 10px solid $form-border
+
+label, input, textarea
+  display: block
+  width: 100%
+  font-size: $font-size
+  line-height: $font-size * 2
+  font-family: $font-face
+
+input
+  margin-bottom: $font-size * 2
+
+h3
+  font-weight: normal
+  font-size: 10pt
+  line-height: $font-size * 2
+  font-style: italic
+  margin: 0 0 .5em 0
+
+span
+  font-size: 8pt
+
+em
+  color: $form-border
+  font-weight: bold
+
+input, textarea
+  border: none
+  border: 1px solid rgba(0,0,0,.1)
+  border-radius: 2px
+  background: $form-bg
+  padding-left: 5px
+  outline: none
+
+input:focus, textarea:focus
+  border: 1px solid $form-focus
+
+textarea
+  resize: none
+
+button
+  display: block
+  float: right
+  line-height: $font-size * 2
+  padding: 0 20px
+  border: none
+  background: $form-border
+  color: white
+  letter-spacing: 2px
+  transition: .2s all ease-in-out
+  border-bottom: 2px solid transparent
+  outline: none
+
+  &:hover
+    background: inherit
+    color: $form-border
+    border-bottom: 2px solid $form-border
+
+::selection
+  background: rgb(255, 199, 184)
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus
+  border: 1px solid $form-focus
+  -webkit-text-fill-color: $font-color
+  -webkit-box-shadow: 0 0 0px 1000px $form-bg inset
+  transition: background-color 5000s ease-in-out 0s
+
+
+
+</style>
+
+
+</head>
+<!-- Head -->
+
+
+
+<!-- Body -->
+<body onload="startTime()">
+
+
+
+  <!-- Heading -->
+  <h1> WEATHER FORECAST </h1>
+  <!-- //Headng -->
+
+  <div class="d-flex justify-content-center">
+      <form method="POST">
+
+          {% csrf_token %}
+
+          <div class="form-group ">
+
+              <input type="float" name="lat" id="lat" placeholder="Latitude" required ="" >
+
+
+          </div>
+
+          <div class="align-self-center">
+
+              <input type="float" name="lon"  id="lng" placeholder="longitude" required ="" >
+
+
+          </div>
+
+          </br>
+
+          <div>
+              <button type="submit" class="btn btn-success button">weather check</button>
+
+          </div>
+
+      </br>
+
+          <div>
+              <button onclick="initGeolocation()" class="btn btn-primary button">Click the button to get your current coordinates</button>
+          </div>
+
+      </form>
+ </div>
+ </br>
+
+  </div>
+      <div id="map"></div>
+  </div>
+
+
+
+  <!-- Container -->
+  <div class="container">
+
+
+    <!-- Current-Weather-Widget -->
+    <div class="weather-widget agileits w3layouts">
+      <div class="place agileits w3layouts">
+
+        <div class="city agileits-w3layouts agileits w3layouts">
+          <p>{{weather.name}}</p>
+        </div>
+
+        <div class="dmy agileits w3-agile w3layouts">
+          <script type="text/javascript">
+            var mydate=new Date()
+            var year=mydate.getYear()
+            if(year<1000)
+            year+=1900
+            var day=mydate.getDay()
+            var month=mydate.getMonth()
+            var daym=mydate.getDate()
+            if(daym<10)
+            daym="0"+daym
+            var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+            var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+            document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
+          </script>
+        </div>
+
+        <div id="txt"></div>
+
+        <div class="w3temperatureaits agileits w3-agileits">
+          <div class="w3temperatureaits-grid w3-agileits wthreetemp">
+            <p>{{weather.temperature|floatformat:"0"}}<span>°C</span></p>
+          </div>
+          <div class="w3temperatureaits-grid w3tempimg">
+            <div class="city agileits-w3layouts agileits w3layouts">
+              <p>{{weather.description|title }}</p>
+              <img src="http://openweathermap.org/img/wn/{{weather.icon}}.png" alt="Image" width="100px">
+            </div>
+
+
+
+          </div>
+          <div class="w3temperatureaits-grid w3-agile wthreestats">
+            <ul>
+              <li class="agiletemp agiletemppressure">Wind {{weather.wind}} km/h</li>
+              <li class="agiletemp wthree agiletemphumidity w3-agile">Humidity {{weather.humidity}} %</li>
+              <li class="agiletemp agileits-w3layouts agileinfo agiletempwind">FeelsLike {{weather.feelslike_weather}}°C</li>
+            </ul>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div id="owl-demo" class="owl-carousel agileits text-center">
+          {% for x,y in forcast_data_list.items%}
+          <div class="item w3threeitem w3threeitem1">
+            <h4>{{y.day}}</h4>
+
+            <img src="http://openweathermap.org/img/wn/{{y.icon}}.png" alt="Image" width="100px">
+            <h4> {{y.temperature|floatformat:"0"}}°C</h4>
+            <h2> {{y.description|title}}</h2>
+
+          </div>
+          {% endfor%}
+
+        </div>
+
+      </div>
+    </div>
+      <!-- //Current-Weather-Widget -->
+
+  </div>
+    <!-- //Container -->
+
+        <button class="example_f"><a href="{% url 'colombo' %}"> Back  </a></button>
+
+
+
+
+    <!-- Footer -->
+    <div class="footer">
+
+      <!-- Copyright -->
+      <div class="copyright ">
+        <p>Developed by <u><a href="http://www.linkedin.com/in/sachithadilshanj"> Sachitha Dilshan</u> </a> 👨   | Template Design Downloaded from <a href="http://w3layouts.com">W3layouts</a></p>
+      </div>
+      <!-- //Copyright -->
+
+    </div>
+    <!-- //Footer -->
+
+
+
+    <!-- Custom-JavaScript-File-Links -->
+
+      <!-- Default-JavaScript --> <script type="text/javascript" src="{% static 'staticweather/js/jquery-3.1.1.js' %}"></script>
+
+      <!-- Time-JavaScript -->
+        <script>
+          function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+          }
+          function checkTime(i) {
+            if (i < 10) {i = "0" + i};
+            return i;
+          }
+        </script>
+      <!-- //Time-JavaScript -->
+
+      <!-- Weather-Widget-JavaScript -->
+        <script src="staticweather/js/skycons.js"></script>
+      <script>
+        var icons = new Skycons({"color": "#FFFFFF"}),
+        list  = [
+          "clear-day"
+        ],
+        i;
+        for(i = list.length; i--; )
+        icons.set(list[i], list[i]);
+        icons.play();
+      </script>
+      <script>
+        var icons = new Skycons({"color": "#FFFFFF"}),
+        list = [
+          "clear-night", "partly-cloudy-day",	"partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"
+        ],
+        i;
+        for(i = list.length; i--; )
+        icons.set(list[i], list[i]);
+        icons.play();
+      </script>
+    <!--//Weather-Widget-JavaScript -->
+
+    <!-- Owl-Carousel-JavaScript -->
+      <script src="{% static 'staticweather/js/owl.carousel.js' %}"></script>
+      <script>
+        $(document).ready(function() {
+          $("#owl-demo").owlCarousel({
+            autoPlay: 3000,
+            items : 5,
+            itemsDesktop : [1024,4],
+            itemsDesktopSmall : [640,3]
+          });
+        });
+      </script>
+      <!-- Google maps -->
+<style type="text/css">
+  #map{
+      width:500px;
+      height: 400px;
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+
+</style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script>
+          //Set up some of our variables.
+      var map; //Will contain map object.
+      var marker = false; ////Has the user plotted their location marker?
+
+      //Function called to initialize / create the map.
+      //This is called when the page has loaded.
+      function initMap() {
+
+      //The center location of our map.
+      var centerOfMap = new google.maps.LatLng(7.161760600000001, 80.12462289999999);
+
+      //Map options.
+      var options = {
+      center: centerOfMap, //Set center.
+      zoom: 7 //The zoom value.
+      };
+
+      //Create the map object.
+      map = new google.maps.Map(document.getElementById('map'), options);
+
+      //Listen for any clicks on the map.
+      google.maps.event.addListener(map, 'click', function(event) {
+      //Get the location that the user clicked.
+      var clickedLocation = event.latLng;
+      //If the marker hasn't been added.
+      if(marker === false){
+          //Create the marker.
+          marker = new google.maps.Marker({
+              position: clickedLocation,
+              map: map,
+              draggable: true //make it draggable
+          });
+          //Listen for drag events!
+          google.maps.event.addListener(marker, 'dragend', function(event){
+              markerLocation();
+          });
+      } else{
+          //Marker has already been added, so just change its location.
+          marker.setPosition(clickedLocation);
+      }
+      //Get the marker's location.
+      markerLocation();
+      });
+      }
+
+      //This function will get the marker's current location and then add the lat/long
+      //values to our textfields so that we can save the location.
+      function markerLocation(){
+      //Get location.
+      var currentLocation = marker.getPosition();
+      //Add lat and lng values to a field that we can save.
+      document.getElementById('lat').value = currentLocation.lat(); //latitude
+      document.getElementById('lng').value = currentLocation.lng(); //longitude
+      }
+
+
+      //Load the map when the page has finished loading.
+      google.maps.event.addDomListener(window, 'load', initMap);
+</script>
+    <!-- //Owl-Carousel-JavaScript -->
+
+  <!-- //Custom-JavaScript-File-Links -->
+
+
+
+</body>
+<!-- //Body -->
+
+
+
+</html>
+{% endblock %}

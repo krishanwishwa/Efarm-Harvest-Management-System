@@ -1,0 +1,66 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script type="text/javascript" src="{% static "js/vendor/leaflet.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/osm_field.js" %}"></script
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <link href="{% static "css/leaflet.css" %}" type="text/css" media="screen" rel="stylesheet" />
+    <link href="{% static "css/osm_field.css" %}" type="text/css" media="screen" rel="stylesheet" />
+
+    <link href="{% static "css/vendor/leaflet.css" %}" type="text/css" media="screen" rel="stylesheet" />
+    <link href="{% static "css/osm_field.css" %}" type="text/css" media="screen" rel="stylesheet" />
+
+    <!-- or from a CDN -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="{% static "js/vendor/leaflet.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/osm_field.js" %}"></script>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %} "></script>
+    <script src="{% static 'js/lightbox.min.js' %} "></script>
+    <script src="{% static 'js/main.js' %} "></script>
+    <script src="{% static 'js/navscripts.js' %} "></script>
+
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {{ form.media }}
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.location|as_crispy_field}}
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+
+
+      {{ form.location_lat|as_crispy_field}}
+      {{ form.location_lon|as_crispy_field}}
+    <button type="submit">add</button>
+    </form>
+  </body>
+</html>

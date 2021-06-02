@@ -1,0 +1,262 @@
+{% block content %}
+{% load static %}
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html>
+
+
+
+<!-- Head -->
+<head>
+
+<title>Colombo Weather Widget </title>
+
+<!-- For-Mobile-Apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="New York Weather Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //For-Mobile-Apps -->
+
+<!-- Style --> <link rel="stylesheet" href="{% static 'staticweather/css/style_weather.css' %}" type="text/css" media="all" />
+
+<!-- Web-Fonts -->
+<link href='//fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Raleway:100,200' rel='stylesheet' type='text/css'>
+<!-- //Web-Fonts -->
+<style>
+.example_e {
+border: none;
+background: #404040;
+color: #ffffff !important;
+font-weight: 100;
+padding: 20px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.example_e:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+
+.example_f {
+border: none;
+background: rgba(119, 170, 197, 0.30);
+color: #ffffff !important;
+font-weight: 700 !important;
+padding: 20px;
+letter-spacing: 3px;
+text-transform: uppercase;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+
+.example_f:hover {
+color: #404040 !important;
+font-weight: 700 !important;
+letter-spacing: 3px;
+background: none;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.3s ease 0s;
+}
+/* The alert message box */
+.alert {
+  padding: 5px;
+  background-color: rgba(24, 237, 12, 0.73); /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+
+
+
+
+</style>
+</head>
+<!-- Head -->
+
+
+
+<!-- Body -->
+<body onload="startTime()">
+	{% if messages %}
+	<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+	<ul class="messages">
+	    {% for message in messages %}
+	    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+	    {% endfor %}
+	</ul>
+</div>
+	{% endif %}
+
+
+
+	<!-- Heading -->
+	<h1>COLOMBO WEATHER WIDGET</h1>
+	<!-- //Headng -->
+
+	<br>
+		<a href="{% url 'forecast' %}">
+		<button class="example_f" id="signOutBtn" type="submit"   > 🔍 Weather Forecast by Loaction</button>
+	</a>
+		<!-- Container -->
+		<div class="container">
+
+			<!-- City -->
+			<div class="city">
+				<div class="title">
+					<h2>{{weather.city}},{{weather.country}} </h2>
+					<h3>FeelsLike {{weather.feelslike_weather}}°C</h3>
+				</div>
+				<div class="date-time">
+					<div class="dmy">
+						<div id="txt"></div>
+						<div class="date">
+							<!-- Date-JavaScript -->
+							<script type="text/javascript">
+							var mydate=new Date()
+							var year=mydate.getYear()
+							if(year<1000)
+							year+=1900
+							var day=mydate.getDay()
+							var month=mydate.getMonth()
+							var daym=mydate.getDate()
+							if(daym<10)
+							daym="0"+daym
+							var dayarray=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+							var montharray=new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+							document.write(""+dayarray[day]+", "+montharray[month]+" "+daym+", "+year+"")
+							</script>
+							<!-- //Date-JavaScript -->
+						</div>
+					</div>
+					<div class="temperature">
+						<p>{{weather.temperature|floatformat:"0"}}<span>°C</span></p>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!-- //City -->
+
+
+
+			<!-- Forecast -->
+			<div class="forecast">
+				<div class="forecast-icon">
+					<img src="http://openweathermap.org/img/wn/{{weather.icon}}.png" alt="Image" width="100px">
+
+				</div>
+				<div class="today-weather">
+					<h3>{{weather.description|title }}</h3>
+
+					<ul>
+						<li>FeelsLike <span> {{weather.feelslike_weather}}°C</span></li>
+						<li>Wind <span> {{weather.wind}} km/h</span></li>
+
+						<li>Humidity <span>  {{weather.humidity}} %</span></li>
+          	</ul>
+            <br>
+            <br>
+
+            <div>
+
+
+          </div>
+
+
+				</div>
+
+			</div>
+			<!-- //Forecast -->
+			<div class="clear"></div>
+
+		</div>
+		<div>
+		<form method="POST" action="{% url 'logout' %}">
+				{% csrf_token %}
+				<button class="example_f" id="signOutBtn" type="submit" >Log Out</button>
+		</form>
+
+	</div>
+	<br>
+		<!-- //Container -->
+
+
+
+	<!-- Footer -->
+	<div class="footer">
+
+		
+
+	</div>
+	<!-- //Footer -->
+
+
+
+	<!-- Custom-JavaScript-Files -->
+
+		<!-- Time-JavaScript -->
+		<script>
+			function startTime() {
+				var today = new Date();
+				var h = today.getHours();
+				var m = today.getMinutes();
+				var s = today.getSeconds();
+				m = checkTime(m);
+				s = checkTime(s);
+				document.getElementById('txt').innerHTML =
+				h + ":" + m + ":" + s;
+				var t = setTimeout(startTime, 500);
+				}
+				function checkTime(i) {
+				if (i < 10) {i = "0" + i}; // add zero in front of numbers < 10
+				return i;
+			}
+		</script>
+		<!-- //Time-JavaScript -->
+
+	<!-- //Custom-JavaScript-File-Links -->
+
+
+
+</body>
+<!-- //Body -->
+
+
+
+</html>
+{% endblock %}
